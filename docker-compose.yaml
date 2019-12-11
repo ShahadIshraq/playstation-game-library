@@ -1,0 +1,26 @@
+version: '3'
+services:
+  playstation:
+    image: playstation:latest
+    build:
+      context: ./
+    environment:
+      - NODE_ENV=dev
+      - ENV_NAME=local
+    ports:
+      - 8080:8080
+      - 3000:3000
+    volumes:
+      - ./:/opt/app
+  
+  database:
+    image: mongo
+    environment:
+      - MONGO_INITDB_DATABASE=playstation
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=dummy1234
+    volumes:
+      - ./mongo/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo-js:ro
+      - ~/.mongo-volume:/data/db
+    ports:
+      - 27017:27017
