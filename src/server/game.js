@@ -3,12 +3,10 @@ const mongoose = require('mongoose');
 const Game = mongoose.model('Game');
 
 const list = (req, res) => {
-    console.log('Got');
     Game.find({}, (err, games) => {
         if (err) {
             return res.status(500).json({error: err});
         }
-        console.log('Got 1');
         return res.json({ games });
     });
 };
