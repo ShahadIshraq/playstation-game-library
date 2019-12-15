@@ -26,7 +26,12 @@ module.exports = {
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
         loader: 'url-loader?limit=100000'
-      }
+      },
+      // Adds 'import .png/svg/jpg/gif' support
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        loader: 'file-loader'
+      },
     ]
   },
   resolve: {
@@ -38,7 +43,7 @@ module.exports = {
     open: true,
     proxy: {
       '/api': 'http://localhost:8080'
-    }
+    },
   },
   plugins: [
     new CleanWebpackPlugin([outputDirectory]),
