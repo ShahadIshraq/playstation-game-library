@@ -6,3 +6,24 @@ body {
   text-align: center;
   margin: auto;
 }
+
+table {
+  border-collapse: collapse;
+}
+
+table {
+  margin-left: 10%;
+  margin-bottom: 5%;
+  width: 80%;
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid black;
+}
+
+tr {
+  cursor: pointer;
+}
+
