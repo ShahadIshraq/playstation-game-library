@@ -144,7 +144,7 @@ devServer: {
     port: 3000,
     open: true,
     proxy: {
-        "/api": "http://localhost:8080"
+        "/api/**": "http://localhost:8080"
     }
 }
 ```
@@ -195,23 +195,3 @@ This starts a server and listens on port 8080 for connections. The app responds 
 "server": "nodemon src/server/index.js",
 "dev": "concurrently \"npm run server\" \"npm run client\""
 ```
-
-### VSCode + ESLint + Prettier
-
-[VSCode](https://code.visualstudio.com/) is a lightweight but powerful source code editor. [ESLint](https://eslint.org/) takes care of the code-quality. [Prettier](https://prettier.io/) takes care of all the formatting.
-
-#### Installation guide
-
-1.  Install [VSCode](https://code.visualstudio.com/)
-2.  Install [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-3.  Install [Prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-4.  Modify the VSCode user settings to add below configuration
-
-    ```javascript
-    "eslint.alwaysShowStatus": true,
-    "eslint.autoFixOnSave": true,
-    "editor.formatOnSave": true,
-    "prettier.eslintIntegration": true
-    ```
-
-Above, we have modified editor configurations. Alternatively, this can be configured at the project level by following [this article](https://medium.com/@netczuk/your-last-eslint-config-9e35bace2f99).
