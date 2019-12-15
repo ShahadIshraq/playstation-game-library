@@ -6,4 +6,5 @@ module.exports = function (app) {
   app.get('/api/games/:id', game.getById);
   app.post('/api/games', game.create);
   app.put('/api/games/:id', game.update);
+  app.delete('/api/games/:id', game.remove);
 };

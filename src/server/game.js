@@ -24,8 +24,6 @@ const getById = (req, res) => {
 };
 
 const create = (req, res) => {
-  // const newGame = new Game();
-  // A field was recieved
   let buffers = [];
   const busboy = new Busboy({ headers: req.headers });
   busboy.on('field', (fieldname, val) => {
@@ -59,35 +57,25 @@ const create = (req, res) => {
     res.end();
   });
   return req.pipe(busboy);
-
-
-
-
-
-
-
-
-    // console.log(req.body);
-    // console.log(req.file);
-    // // newGame.name = req.body.name;
-    // // newGame.platform = req.body.platform;
-    // // newGame.releasedOn = req.body.releasedOn || Date.now();
-    // // newGame.save((err, game) => {
-    // //     if (err) {
-    // //         return res.status(500).json({error: err});
-    // //     }
-    // //     return res.json({ game });
-    // // });
-    // return res.status(201).json({});
 };
 
 const update = (req, res) => {
     return res.json({ msg: 'TODO' });
 };
 
+const remove = (req, res) => {
+  Game.findByIdAndRemove(req.params.id, err => {
+    if (err) {
+      return res.status(500).json({error: err});
+    }
+    return res.json({message: 'Deleted'});
+  });  
+};
+
 module.exports = {
-    list,
-    getById,
-    create,
-    update,
+  list,
+  getById,
+  create,
+  update,
+  remove,
 }
