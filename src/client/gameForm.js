@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { createGame } from './actions';
 
 class GameForm extends Component {
@@ -34,8 +35,8 @@ class GameForm extends Component {
     }
 
     createGame(data)
-    .then(response => {
-      console.log('Got it',response);
+    .then(_ => {
+      this.props.onAddition();
     })
     .catch(err => {
       console.log(err);
@@ -80,5 +81,9 @@ class GameForm extends Component {
     );
   }
 }
+
+GameForm.propTypes = {
+  onAddition: PropTypes.func.isRequired,
+};
 
 export default GameForm;

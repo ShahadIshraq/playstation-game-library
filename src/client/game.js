@@ -60,8 +60,8 @@ class Game extends Component {
   }
 }
   
-  Game.propTypes = {
-    id: PropTypes.string.isRequired,
-  };
-  
-  export default Game;
+Game.propTypes = {
+  id: PropTypes.string.isRequired,
+};
+
+export default Game;

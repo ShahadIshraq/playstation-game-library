@@ -13,9 +13,14 @@ class Home extends Component {
       games: []
     };
     this.goToGamePage = this.goToGamePage.bind(this);
+    this.reload = this.reload.bind(this);
   }
   
   componentDidMount() {
+    this.reload();
+  }
+
+  reload() {
     getGames().then((response) => {
       this.setState({games: response.data.games});
     });
@@ -59,7 +64,7 @@ class Home extends Component {
             </tbody>
           </table>
           <h2>Add New Game</h2>
-          <GameForm/>
+          <GameForm onAddition={this.reload}/>
         </div>
       );
     }
